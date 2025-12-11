@@ -1,0 +1,67 @@
+{
+  "name": "HuePass - WCAG Color Contrast Checker",
+  "short_name": "HuePass",
+  "description": "Free WCAG color contrast checker and accessible palette builder. Verify AA/AAA compliance and export accessible color palettes.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0b",
+  "theme_color": "#0a0a0b",
+  "orientation": "any",
+  "scope": "/",
+  "lang": "en",
+  "categories": ["utilities", "developer tools", "design"],
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/screenshot-wide.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "HuePass contrast checker tool"
+    },
+    {
+      "src": "/screenshot-narrow.png",
+      "sizes": "750x1334",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "HuePass mobile view"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Check Contrast",
+      "short_name": "Contrast",
+      "description": "Open the color contrast checker",
+      "url": "/#contrast-checker",
+      "icons": [{ "src": "/favicon.svg", "sizes": "any" }]
+    },
+    {
+      "name": "Resources",
+      "short_name": "Resources",
+      "description": "View accessibility resources",
+      "url": "/resources",
+      "icons": [{ "src": "/favicon.svg", "sizes": "any" }]
+    }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false
+}

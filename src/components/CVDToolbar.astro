@@ -1,0 +1,395 @@
+---
+/**
+ * Floating toolbar for Color Vision Deficiency (CVD) simulation
+ * Hovers on the side of the screen and expands on hover to show options
+ */
+---
+
+<div class="cvd-toolbar" id="cvd-toolbar">
+  <button class="cvd-trigger" id="cvd-trigger" aria-label="Color blindness simulation options" aria-expanded="false">
+    <svg class="cvd-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="10"/>
+      <circle cx="12" cy="12" r="4"/>
+      <line x1="21.17" y1="8" x2="12" y2="8"/>
+      <line x1="3.95" y1="6.06" x2="8.54" y2="14"/>
+      <line x1="10.88" y1="21.94" x2="15.46" y2="14"/>
+    </svg>
+    <span class="cvd-trigger-label">CVD</span>
+  </button>
+
+  <div class="cvd-panel" id="cvd-panel" role="menu" aria-label="Color blindness simulation modes">
+    <div class="cvd-panel-header">
+      <span class="cvd-panel-title">Vision Simulation</span>
+      <span class="cvd-panel-subtitle">Preview for color blindness</span>
+    </div>
+
+    <div class="cvd-options">
+      <button class="cvd-option active" data-cvd="none" role="menuitemradio" aria-checked="true">
+        <span class="cvd-option-check">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"/>
+          </svg>
+        </span>
+        <span class="cvd-option-content">
+          <span class="cvd-option-name">Normal Vision</span>
+          <span class="cvd-option-desc">No simulation applied</span>
+        </span>
+      </button>
+
+      <button class="cvd-option" data-cvd="protanopia" role="menuitemradio" aria-checked="false">
+        <span class="cvd-option-check">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"/>
+          </svg>
+        </span>
+        <span class="cvd-option-content">
+          <span class="cvd-option-name">Protanopia</span>
+          <span class="cvd-option-desc">Red-blind (~1% of males)</span>
+        </span>
+      </button>
+
+      <button class="cvd-option" data-cvd="deuteranopia" role="menuitemradio" aria-checked="false">
+        <span class="cvd-option-check">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"/>
+          </svg>
+        </span>
+        <span class="cvd-option-content">
+          <span class="cvd-option-name">Deuteranopia</span>
+          <span class="cvd-option-desc">Green-blind (~5% of males)</span>
+        </span>
+      </button>
+
+      <button class="cvd-option" data-cvd="tritanopia" role="menuitemradio" aria-checked="false">
+        <span class="cvd-option-check">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"/>
+          </svg>
+        </span>
+        <span class="cvd-option-content">
+          <span class="cvd-option-name">Tritanopia</span>
+          <span class="cvd-option-desc">Blue-blind (~0.01%)</span>
+        </span>
+      </button>
+
+      <button class="cvd-option" data-cvd="achromatopsia" role="menuitemradio" aria-checked="false">
+        <span class="cvd-option-check">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"/>
+          </svg>
+        </span>
+        <span class="cvd-option-content">
+          <span class="cvd-option-name">Achromatopsia</span>
+          <span class="cvd-option-desc">Complete color blindness</span>
+        </span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- SVG Filters for CVD simulation (injected once) -->
+<div id="cvd-filters-container"></div>
+
+<script>
+  import { generateCVDFilters, setCVDMode, initCVDMode, getCurrentCVDMode } from '../scripts/color-blindness';
+  import type { CVDType } from '../scripts/color-blindness';
+
+  // Inject SVG filters
+  const filtersContainer = document.getElementById('cvd-filters-container');
+  if (filtersContainer) {
+    filtersContainer.innerHTML = generateCVDFilters();
+  }
+
+  // DOM elements
+  const toolbar = document.getElementById('cvd-toolbar') as HTMLElement;
+  const trigger = document.getElementById('cvd-trigger') as HTMLButtonElement;
+  const panel = document.getElementById('cvd-panel') as HTMLElement;
+  const options = document.querySelectorAll('.cvd-option') as NodeListOf<HTMLButtonElement>;
+
+  let isExpanded = false;
+  let hoverTimeout: ReturnType<typeof setTimeout> | null = null;
+
+  /**
+   * Expand the toolbar panel
+   */
+  function expand() {
+    if (hoverTimeout) clearTimeout(hoverTimeout);
+    isExpanded = true;
+    toolbar.classList.add('expanded');
+    trigger.setAttribute('aria-expanded', 'true');
+  }
+
+  /**
+   * Collapse the toolbar panel
+   */
+  function collapse() {
+    hoverTimeout = setTimeout(() => {
+      isExpanded = false;
+      toolbar.classList.remove('expanded');
+      trigger.setAttribute('aria-expanded', 'false');
+    }, 150);
+  }
+
+  /**
+   * Update active state of options
+   */
+  function updateActiveOption(mode: CVDType) {
+    options.forEach(option => {
+      const isActive = option.dataset.cvd === mode;
+      option.classList.toggle('active', isActive);
+      option.setAttribute('aria-checked', isActive.toString());
+    });
+
+    // Update trigger to indicate active mode
+    if (mode !== 'none') {
+      trigger.classList.add('mode-active');
+    } else {
+      trigger.classList.remove('mode-active');
+    }
+  }
+
+  // Event listeners for hover behavior
+  toolbar.addEventListener('mouseenter', expand);
+  toolbar.addEventListener('mouseleave', collapse);
+  toolbar.addEventListener('focusin', expand);
+  toolbar.addEventListener('focusout', (e) => {
+    if (!toolbar.contains(e.relatedTarget as Node)) {
+      collapse();
+    }
+  });
+
+  // Trigger click toggles panel on mobile
+  trigger.addEventListener('click', () => {
+    if (isExpanded) {
+      toolbar.classList.remove('expanded');
+      isExpanded = false;
+    } else {
+      expand();
+    }
+  });
+
+  // Option selection
+  options.forEach(option => {
+    option.addEventListener('click', () => {
+      const mode = option.dataset.cvd as CVDType;
+      setCVDMode(mode);
+      updateActiveOption(mode);
+    });
+  });
+
+  // Initialize from stored preference
+  initCVDMode();
+  updateActiveOption(getCurrentCVDMode());
+
+  // Listen for external CVD mode changes
+  window.addEventListener('cvdModeChange', ((e: CustomEvent) => {
+    updateActiveOption(e.detail.mode);
+  }) as EventListener);
+</script>
+
+<style is:global>
+  .cvd-toolbar {
+    position: fixed;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+  }
+
+  .cvd-trigger {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-3);
+    background: var(--color-bg-elevated);
+    border: 1px solid var(--color-border);
+    border-right: none;
+    border-radius: var(--radius-lg) 0 0 var(--radius-lg);
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .cvd-trigger:hover {
+    color: var(--color-text-primary);
+    background: var(--color-bg-tertiary);
+  }
+
+  .cvd-trigger.mode-active {
+    color: var(--color-accent);
+    border-color: var(--color-accent);
+    background: var(--color-accent-subtle);
+  }
+
+  .cvd-trigger-label {
+    font-size: var(--text-xs);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+  }
+
+  .cvd-icon {
+    flex-shrink: 0;
+  }
+
+  .cvd-panel {
+    position: absolute;
+    right: 100%;
+    top: 50%;
+    transform: translateY(-50%) translateX(10px);
+    width: 260px;
+    background: var(--color-bg-elevated);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-xl);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: all var(--transition-fast);
+  }
+
+  .cvd-toolbar.expanded .cvd-panel {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(-50%) translateX(0);
+  }
+
+  .cvd-panel-header {
+    padding: var(--space-4);
+    border-bottom: 1px solid var(--color-border-subtle);
+  }
+
+  .cvd-panel-title {
+    display: block;
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-1);
+  }
+
+  .cvd-panel-subtitle {
+    display: block;
+    font-size: var(--text-xs);
+    color: var(--color-text-tertiary);
+  }
+
+  .cvd-options {
+    padding: var(--space-2);
+  }
+
+  .cvd-option {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    width: 100%;
+    padding: var(--space-3);
+    background: transparent;
+    border: none;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    text-align: left;
+    transition: background var(--transition-fast);
+  }
+
+  .cvd-option:hover {
+    background: var(--color-bg-hover);
+  }
+
+  .cvd-option.active {
+    background: var(--color-accent-subtle);
+  }
+
+  .cvd-option-check {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    border-radius: var(--radius-full);
+    border: 2px solid var(--color-border);
+    color: transparent;
+    flex-shrink: 0;
+    transition: all var(--transition-fast);
+  }
+
+  .cvd-option.active .cvd-option-check {
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+    color: white;
+  }
+
+  .cvd-option-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+  }
+
+  .cvd-option-name {
+    font-size: var(--text-sm);
+    font-weight: 500;
+    color: var(--color-text-primary);
+  }
+
+  .cvd-option-desc {
+    font-size: var(--text-xs);
+    color: var(--color-text-tertiary);
+  }
+
+  /* Active mode indicator on trigger */
+  .cvd-trigger.mode-active::after {
+    content: '';
+    position: absolute;
+    top: var(--space-2);
+    right: var(--space-2);
+    width: 8px;
+    height: 8px;
+    background: var(--color-accent);
+    border-radius: var(--radius-full);
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+  }
+
+  /* Responsive - move to bottom on mobile */
+  @media (max-width: 768px) {
+    .cvd-toolbar {
+      right: var(--space-4);
+      top: auto;
+      bottom: var(--space-20);
+      transform: none;
+    }
+
+    .cvd-trigger {
+      border-radius: var(--radius-lg);
+      border-right: 1px solid var(--color-border);
+      padding: var(--space-3);
+    }
+
+    .cvd-trigger-label {
+      writing-mode: horizontal-tb;
+      display: none;
+    }
+
+    .cvd-panel {
+      right: 0;
+      top: auto;
+      bottom: 100%;
+      transform: translateY(-10px);
+      margin-bottom: var(--space-2);
+    }
+
+    .cvd-toolbar.expanded .cvd-panel {
+      transform: translateY(0);
+    }
+  }
+</style>

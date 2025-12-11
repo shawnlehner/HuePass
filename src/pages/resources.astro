@@ -1,0 +1,827 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = 'Accessibility Resources';
+const description = 'Learn about web accessibility, WCAG guidelines, color contrast requirements, and legal standards. Comprehensive resources for designers and developers building inclusive digital experiences.';
+
+// Educational Article schema with BreadcrumbList
+const resourcesSchema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Accessibility Resources - WCAG Guidelines & Color Contrast",
+    "description": description,
+    "url": "https://huepass.com/resources",
+    "author": {
+      "@type": "Person",
+      "name": "Shawn Lehner"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "HuePass",
+      "url": "https://huepass.com"
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://huepass.com/resources"
+    },
+    "about": [
+      { "@type": "Thing", "name": "Web Accessibility" },
+      { "@type": "Thing", "name": "WCAG Guidelines" },
+      { "@type": "Thing", "name": "Color Contrast" },
+      { "@type": "Thing", "name": "Color Blindness" }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://huepass.com"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Resources",
+        "item": "https://huepass.com/resources"
+      }
+    ]
+  }
+];
+---
+
+<BaseLayout title={title} description={description} schema={resourcesSchema}>
+  <article class="resources-page">
+    <div class="container container-narrow">
+      <!-- Hero -->
+      <header class="resources-hero">
+        <h1 class="resources-title">Accessibility Resources</h1>
+        <p class="resources-subtitle">
+          Everything you need to understand web accessibility, color contrast, and inclusive design
+        </p>
+      </header>
+
+      <!-- Why Accessibility Matters -->
+      <section class="resources-section">
+        <h2 class="section-heading">Why Accessibility Matters</h2>
+        <p>
+          Web accessibility ensures that websites, tools, and technologies are designed so that people with disabilities can use them. This includes people with visual, auditory, physical, speech, cognitive, and neurological disabilities.
+        </p>
+        <p>
+          But accessibility benefits everyone. Consider situational limitations like bright sunlight on a screen, a quiet environment where audio can't be played, or a slow internet connection. Accessible design creates better experiences for all users.
+        </p>
+        <div class="stat-grid">
+          <div class="stat-card">
+            <span class="stat-number">1.3B+</span>
+            <span class="stat-label">People worldwide with disabilities</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number">2.2B</span>
+            <span class="stat-label">People with vision impairments</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number">350M+</span>
+            <span class="stat-label">People with color blindness</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number">8%</span>
+            <span class="stat-label">Of men have color vision deficiency</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Understanding WCAG -->
+      <section class="resources-section">
+        <h2 class="section-heading">Understanding WCAG</h2>
+        <p>
+          The Web Content Accessibility Guidelines (WCAG) are the international standard for web accessibility, published by the World Wide Web Consortium (W3C). WCAG 2.2, published in October 2023, is the current version and is also an ISO standard (ISO/IEC 40500:2025).
+        </p>
+
+        <h3 class="subsection-heading">The Four Principles (POUR)</h3>
+        <p>WCAG is organized around four core principles. Content must be:</p>
+        <ul class="principles-list">
+          <li>
+            <strong>Perceivable</strong> - Information must be presentable in ways users can perceive (sight, hearing, or touch)
+          </li>
+          <li>
+            <strong>Operable</strong> - Interface components must be operable by keyboard, mouse, voice, and other input methods
+          </li>
+          <li>
+            <strong>Understandable</strong> - Information and operation of the interface must be understandable
+          </li>
+          <li>
+            <strong>Robust</strong> - Content must be robust enough to work with current and future technologies
+          </li>
+        </ul>
+
+        <h3 class="subsection-heading">Conformance Levels</h3>
+        <div class="levels-grid">
+          <div class="level-card">
+            <span class="level-badge">A</span>
+            <h4>Minimum</h4>
+            <p>Basic accessibility features that don't significantly impact design. Essential for any website.</p>
+          </div>
+          <div class="level-card level-recommended">
+            <span class="level-badge">AA</span>
+            <h4>Recommended</h4>
+            <p>The standard target for most websites. Required by most accessibility laws and regulations.</p>
+          </div>
+          <div class="level-card">
+            <span class="level-badge">AAA</span>
+            <h4>Enhanced</h4>
+            <p>Highest level of accessibility. Not always achievable for all content types.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Color Contrast Requirements -->
+      <section class="resources-section">
+        <h2 class="section-heading">Color Contrast Requirements</h2>
+        <p>
+          Color contrast is governed by WCAG Success Criteria 1.4.3 (Contrast - Minimum) and 1.4.6 (Contrast - Enhanced). These ensure text is readable against its background for users with low vision or color blindness.
+        </p>
+
+        <div class="contrast-requirements">
+          <div class="requirement-row">
+            <div class="requirement-type">
+              <h4>Normal Text</h4>
+              <span class="text-size">Under 18pt or 14pt bold</span>
+            </div>
+            <div class="requirement-values">
+              <div class="req-value">
+                <span class="req-level">AA</span>
+                <span class="req-ratio">4.5:1</span>
+              </div>
+              <div class="req-value">
+                <span class="req-level">AAA</span>
+                <span class="req-ratio">7:1</span>
+              </div>
+            </div>
+          </div>
+          <div class="requirement-row">
+            <div class="requirement-type">
+              <h4>Large Text</h4>
+              <span class="text-size">18pt+ or 14pt+ bold</span>
+            </div>
+            <div class="requirement-values">
+              <div class="req-value">
+                <span class="req-level">AA</span>
+                <span class="req-ratio">3:1</span>
+              </div>
+              <div class="req-value">
+                <span class="req-level">AAA</span>
+                <span class="req-ratio">4.5:1</span>
+              </div>
+            </div>
+          </div>
+          <div class="requirement-row">
+            <div class="requirement-type">
+              <h4>UI Components</h4>
+              <span class="text-size">Icons, form inputs, focus indicators</span>
+            </div>
+            <div class="requirement-values">
+              <div class="req-value">
+                <span class="req-level">AA</span>
+                <span class="req-ratio">3:1</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tip-box">
+          <h4>Beyond Color Alone</h4>
+          <p>
+            WCAG requires that color is not used as the only visual means of conveying information. Always provide additional indicators like icons, patterns, or text labels alongside color coding.
+          </p>
+        </div>
+      </section>
+
+      <!-- Color Blindness -->
+      <section class="resources-section">
+        <h2 class="section-heading">Designing for Color Blindness</h2>
+        <p>
+          Color vision deficiency affects approximately 1 in 12 men (8%) and 1 in 200 women (0.5%). Understanding the different types helps create designs that work for everyone.
+        </p>
+
+        <div class="cvd-grid">
+          <div class="cvd-card">
+            <h4>Protanopia</h4>
+            <p>Red blindness - difficulty distinguishing red from green, and red appears darker</p>
+            <span class="cvd-stat">~1% of males</span>
+          </div>
+          <div class="cvd-card">
+            <h4>Deuteranopia</h4>
+            <p>Green blindness - most common form, difficulty with red-green distinction</p>
+            <span class="cvd-stat">~5% of males</span>
+          </div>
+          <div class="cvd-card">
+            <h4>Tritanopia</h4>
+            <p>Blue blindness - rare, difficulty distinguishing blue from yellow</p>
+            <span class="cvd-stat">~0.01% of population</span>
+          </div>
+          <div class="cvd-card">
+            <h4>Achromatopsia</h4>
+            <p>Complete color blindness - sees only in grayscale</p>
+            <span class="cvd-stat">~0.003% of population</span>
+          </div>
+        </div>
+
+        <h3 class="subsection-heading">Best Practices</h3>
+        <ul class="best-practices-list">
+          <li>Use high contrast ratios that work in grayscale</li>
+          <li>Don't rely on color alone to convey meaning</li>
+          <li>Add patterns, icons, or text labels to color-coded elements</li>
+          <li>Test designs with color blindness simulators</li>
+          <li>Avoid problematic color combinations like red/green or blue/yellow</li>
+        </ul>
+      </section>
+
+      <!-- Legal Requirements -->
+      <section class="resources-section">
+        <h2 class="section-heading">Legal Requirements</h2>
+        <p>
+          Web accessibility is increasingly mandated by law. While specific requirements vary by jurisdiction and organization type, most reference WCAG 2.1 or 2.2 Level AA as the technical standard.
+        </p>
+
+        <div class="laws-grid">
+          <div class="law-card">
+            <h4>Americans with Disabilities Act (ADA)</h4>
+            <span class="law-region">United States</span>
+            <p>
+              Title III applies to "places of public accommodation" and has been interpreted to include websites. The 2024 DOJ rule under Title II mandates WCAG 2.1 AA compliance for state and local government websites by 2026-2027.
+            </p>
+          </div>
+          <div class="law-card">
+            <h4>Section 508</h4>
+            <span class="law-region">United States (Federal)</span>
+            <p>
+              Requires federal agencies to make their electronic and information technology accessible. Updated in 2018 to reference WCAG 2.0 Level AA.
+            </p>
+          </div>
+          <div class="law-card">
+            <h4>European Accessibility Act (EAA)</h4>
+            <span class="law-region">European Union</span>
+            <p>
+              Effective June 2025, requires products and services sold in the EU to be accessible. References WCAG 2.1 AA through EN 301 549.
+            </p>
+          </div>
+          <div class="law-card">
+            <h4>Accessibility for Ontarians with Disabilities Act (AODA)</h4>
+            <span class="law-region">Canada (Ontario)</span>
+            <p>
+              Requires WCAG 2.0 Level AA compliance for public sector and large organizations.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- External Resources -->
+      <section class="resources-section">
+        <h2 class="section-heading">Essential Resources</h2>
+        <p>
+          These authoritative resources will help you learn more about accessibility and stay current with standards and best practices.
+        </p>
+
+        <h3 class="subsection-heading">Official Standards & Guidelines</h3>
+        <ul class="links-list">
+          <li>
+            <a href="https://www.w3.org/WAI/" target="_blank" rel="noopener noreferrer">
+              <span class="link-title">W3C Web Accessibility Initiative (WAI)</span>
+              <span class="link-desc">The official source for WCAG and all W3C accessibility standards</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.w3.org/TR/WCAG22/" target="_blank" rel="noopener noreferrer">
+              <span class="link-title">WCAG 2.2 Specification</span>
+              <span class="link-desc">The complete official WCAG 2.2 technical specification</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.w3.org/WAI/standards-guidelines/wcag/glance/" target="_blank" rel="noopener noreferrer">
+              <span class="link-title">WCAG 2 at a Glance</span>
+              <span class="link-desc">A quick summary of the WCAG guidelines</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.section508.gov/" target="_blank" rel="noopener noreferrer">
+              <span class="link-title">Section508.gov</span>
+              <span class="link-desc">U.S. federal accessibility requirements and resources</span>
+            </a>
+          </li>
+        </ul>
+
+        <h3 class="subsection-heading">Learning & Training</h3>
+        <ul class="links-list">
+          <li>
+            <a href="https://webaim.org/" target="_blank" rel="noopener noreferrer">
+              <span class="link-title">WebAIM</span>
+              <span class="link-desc">Web Accessibility In Mind - excellent tutorials, articles, and tools</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://webaim.org/standards/wcag/checklist" target="_blank" rel="noopener noreferrer">
+              <span class="link-title">WebAIM WCAG Checklist</span>
+              <span class="link-desc">Simplified, practical checklist for WCAG compliance</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.a11yproject.com/" target="_blank" rel="noopener noreferrer">
+              <span class="link-title">The A11Y Project</span>
+              <span class="link-desc">Community-driven accessibility resource with patterns and tips</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://web.dev/accessibility/" target="_blank" rel="noopener noreferrer">
+              <span class="link-title">web.dev Accessibility</span>
+              <span class="link-desc">Google's accessibility learning path and documentation</span>
+            </a>
+          </li>
+        </ul>
+
+        <h3 class="subsection-heading">Color & Contrast Tools</h3>
+        <ul class="links-list">
+          <li>
+            <a href="https://www.whocanuse.com/" target="_blank" rel="noopener noreferrer">
+              <span class="link-title">Who Can Use</span>
+              <span class="link-desc">See how color contrast affects different vision types</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://colororacle.org/" target="_blank" rel="noopener noreferrer">
+              <span class="link-title">Color Oracle</span>
+              <span class="link-desc">Free color blindness simulator for Windows, Mac, and Linux</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://colorblindsimulator.app/" target="_blank" rel="noopener noreferrer">
+              <span class="link-title">Color Blindness Simulator</span>
+              <span class="link-desc">Test images and websites for color blindness accessibility</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://contrast-ratio.com/" target="_blank" rel="noopener noreferrer">
+              <span class="link-title">Contrast Ratio by Lea Verou</span>
+              <span class="link-desc">Simple, elegant contrast ratio calculator</span>
+            </a>
+          </li>
+        </ul>
+
+        <h3 class="subsection-heading">Testing & Evaluation</h3>
+        <ul class="links-list">
+          <li>
+            <a href="https://wave.webaim.org/" target="_blank" rel="noopener noreferrer">
+              <span class="link-title">WAVE Web Accessibility Evaluator</span>
+              <span class="link-desc">Free tool to evaluate web content for accessibility issues</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.deque.com/axe/" target="_blank" rel="noopener noreferrer">
+              <span class="link-title">axe by Deque</span>
+              <span class="link-desc">Industry-standard accessibility testing toolkit and browser extension</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://developers.google.com/web/tools/lighthouse" target="_blank" rel="noopener noreferrer">
+              <span class="link-title">Google Lighthouse</span>
+              <span class="link-desc">Automated auditing including accessibility checks built into Chrome</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://accessibilityinsights.io/" target="_blank" rel="noopener noreferrer">
+              <span class="link-title">Accessibility Insights</span>
+              <span class="link-desc">Microsoft's free tools for finding accessibility issues</span>
+            </a>
+          </li>
+        </ul>
+      </section>
+
+      <!-- CTA Section -->
+      <section class="resources-cta">
+        <h2>Ready to check your colors?</h2>
+        <p>Use our free tool to verify WCAG compliance and build accessible palettes.</p>
+        <a href="/" class="btn btn-primary btn-lg">
+          Open the Contrast Checker
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"/>
+            <polyline points="12 5 19 12 12 19"/>
+          </svg>
+        </a>
+      </section>
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .resources-page {
+    padding: var(--space-12) 0 var(--space-20);
+  }
+
+  .resources-hero {
+    text-align: center;
+    margin-bottom: var(--space-12);
+    padding-bottom: var(--space-12);
+    border-bottom: 1px solid var(--color-border-subtle);
+  }
+
+  .resources-title {
+    font-size: var(--text-4xl);
+    margin-bottom: var(--space-4);
+  }
+
+  .resources-subtitle {
+    font-size: var(--text-xl);
+    color: var(--color-text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .resources-section {
+    margin-bottom: var(--space-16);
+  }
+
+  .section-heading {
+    font-size: var(--text-2xl);
+    margin-bottom: var(--space-4);
+    padding-bottom: var(--space-3);
+    border-bottom: 2px solid var(--color-accent);
+    display: inline-block;
+  }
+
+  .subsection-heading {
+    font-size: var(--text-lg);
+    margin-top: var(--space-8);
+    margin-bottom: var(--space-4);
+    color: var(--color-text-primary);
+  }
+
+  .resources-section > p {
+    font-size: var(--text-lg);
+    line-height: var(--leading-relaxed);
+    margin-bottom: var(--space-4);
+  }
+
+  /* Stats Grid */
+  .stat-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-4);
+    margin-top: var(--space-8);
+  }
+
+  .stat-card {
+    padding: var(--space-5);
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: var(--radius-lg);
+    text-align: center;
+  }
+
+  .stat-number {
+    display: block;
+    font-size: var(--text-2xl);
+    font-weight: 700;
+    color: var(--color-accent);
+    margin-bottom: var(--space-2);
+  }
+
+  .stat-label {
+    font-size: var(--text-xs);
+    color: var(--color-text-secondary);
+    line-height: var(--leading-tight);
+  }
+
+  /* Principles List */
+  .principles-list {
+    list-style: none;
+    padding: 0;
+    margin: var(--space-4) 0;
+  }
+
+  .principles-list li {
+    padding: var(--space-4);
+    margin-bottom: var(--space-3);
+    background: var(--color-bg-secondary);
+    border-left: 3px solid var(--color-accent);
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  }
+
+  .principles-list strong {
+    color: var(--color-text-primary);
+  }
+
+  /* Levels Grid */
+  .levels-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-4);
+    margin-top: var(--space-6);
+  }
+
+  .level-card {
+    padding: var(--space-5);
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: var(--radius-lg);
+    text-align: center;
+  }
+
+  .level-card.level-recommended {
+    border-color: var(--color-accent);
+    background: var(--color-accent-subtle);
+  }
+
+  .level-badge {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    font-size: var(--text-lg);
+    font-weight: 700;
+    color: var(--color-accent);
+    background: var(--color-bg-tertiary);
+    border-radius: var(--radius-full);
+    margin-bottom: var(--space-3);
+  }
+
+  .level-recommended .level-badge {
+    background: var(--color-accent);
+    color: white;
+  }
+
+  .level-card h4 {
+    font-size: var(--text-base);
+    margin-bottom: var(--space-2);
+  }
+
+  .level-card p {
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+    margin: 0;
+  }
+
+  /* Contrast Requirements */
+  .contrast-requirements {
+    margin: var(--space-6) 0;
+    border: 1px solid var(--color-border-subtle);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+  }
+
+  .requirement-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-4) var(--space-5);
+    border-bottom: 1px solid var(--color-border-subtle);
+    background: var(--color-bg-secondary);
+  }
+
+  .requirement-row:last-child {
+    border-bottom: none;
+  }
+
+  .requirement-type h4 {
+    font-size: var(--text-base);
+    margin-bottom: var(--space-1);
+  }
+
+  .text-size {
+    font-size: var(--text-xs);
+    color: var(--color-text-tertiary);
+  }
+
+  .requirement-values {
+    display: flex;
+    gap: var(--space-4);
+  }
+
+  .req-value {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+  }
+
+  .req-level {
+    font-size: var(--text-xs);
+    font-weight: 600;
+    color: var(--color-success);
+    padding: var(--space-1) var(--space-2);
+    background: var(--color-success-subtle);
+    border-radius: var(--radius-sm);
+  }
+
+  .req-ratio {
+    font-family: var(--font-mono);
+    font-size: var(--text-base);
+    font-weight: 600;
+    color: var(--color-text-primary);
+  }
+
+  /* Tip Box */
+  .tip-box {
+    margin-top: var(--space-6);
+    padding: var(--space-5);
+    background: var(--color-warning-subtle);
+    border: 1px solid var(--color-warning);
+    border-radius: var(--radius-lg);
+  }
+
+  .tip-box h4 {
+    font-size: var(--text-base);
+    color: var(--color-warning);
+    margin-bottom: var(--space-2);
+  }
+
+  .tip-box p {
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+    margin: 0;
+  }
+
+  /* CVD Grid */
+  .cvd-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-4);
+    margin: var(--space-6) 0;
+  }
+
+  .cvd-card {
+    padding: var(--space-5);
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: var(--radius-lg);
+  }
+
+  .cvd-card h4 {
+    font-size: var(--text-base);
+    margin-bottom: var(--space-2);
+  }
+
+  .cvd-card p {
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-3);
+  }
+
+  .cvd-stat {
+    font-size: var(--text-xs);
+    color: var(--color-accent);
+    font-weight: 500;
+  }
+
+  /* Best Practices List */
+  .best-practices-list {
+    list-style: none;
+    padding: 0;
+    margin: var(--space-4) 0;
+  }
+
+  .best-practices-list li {
+    position: relative;
+    padding-left: var(--space-6);
+    margin-bottom: var(--space-3);
+    color: var(--color-text-secondary);
+  }
+
+  .best-practices-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 8px;
+    width: 8px;
+    height: 8px;
+    background: var(--color-success);
+    border-radius: var(--radius-full);
+  }
+
+  /* Laws Grid */
+  .laws-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-4);
+    margin-top: var(--space-6);
+  }
+
+  .law-card {
+    padding: var(--space-5);
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: var(--radius-lg);
+  }
+
+  .law-card h4 {
+    font-size: var(--text-base);
+    margin-bottom: var(--space-1);
+  }
+
+  .law-region {
+    display: inline-block;
+    font-size: var(--text-xs);
+    color: var(--color-accent);
+    margin-bottom: var(--space-3);
+  }
+
+  .law-card p {
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+    margin: 0;
+    line-height: var(--leading-relaxed);
+  }
+
+  /* Links List */
+  .links-list {
+    list-style: none;
+    padding: 0;
+    margin: var(--space-4) 0 var(--space-8);
+  }
+
+  .links-list li {
+    border-bottom: 1px solid var(--color-border-subtle);
+  }
+
+  .links-list li:last-child {
+    border-bottom: none;
+  }
+
+  .links-list a {
+    display: block;
+    padding: var(--space-4) 0;
+    text-decoration: none;
+    transition: transform var(--transition-fast);
+  }
+
+  .links-list a:hover {
+    transform: translateX(4px);
+  }
+
+  .link-title {
+    display: block;
+    font-weight: 500;
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-1);
+  }
+
+  .links-list a:hover .link-title {
+    color: var(--color-accent);
+  }
+
+  .link-desc {
+    display: block;
+    font-size: var(--text-sm);
+    color: var(--color-text-tertiary);
+  }
+
+  /* CTA Section */
+  .resources-cta {
+    text-align: center;
+    padding: var(--space-12);
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: var(--radius-xl);
+    margin-top: var(--space-12);
+  }
+
+  .resources-cta h2 {
+    font-size: var(--text-2xl);
+    margin-bottom: var(--space-2);
+  }
+
+  .resources-cta p {
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-6);
+  }
+
+  .resources-cta .btn {
+    gap: var(--space-2);
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .resources-title {
+      font-size: var(--text-3xl);
+    }
+
+    .stat-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .levels-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .cvd-grid,
+    .laws-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .requirement-row {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var(--space-3);
+    }
+  }
+</style>

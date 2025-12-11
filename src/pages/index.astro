@@ -1,0 +1,286 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ContrastChecker from '../components/ContrastChecker.astro';
+import PaletteBuilder from '../components/PaletteBuilder.astro';
+import SEOContent from '../components/SEOContent.astro';
+
+const title = 'HuePass';
+const description = 'Free WCAG color contrast checker and accessible palette builder. Instantly verify AA/AAA compliance, get suggested alternatives, and export accessible color palettes for your design system.';
+
+// WebApplication schema for the tool
+const webAppSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "HuePass",
+  "url": "https://huepass.com",
+  "description": description,
+  "applicationCategory": "DesignApplication",
+  "operatingSystem": "Any",
+  "browserRequirements": "Requires JavaScript",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "featureList": [
+    "WCAG AA/AAA contrast ratio checking",
+    "Real-time contrast calculation",
+    "Color blindness simulation",
+    "Accessible color suggestions",
+    "Palette building and management",
+    "Export to CSS, JSON, Tailwind, SCSS, Swift, Android XML, Design Tokens"
+  ],
+  "screenshot": "https://huepass.com/og-image.png",
+  "softwareVersion": "1.0",
+  "author": {
+    "@type": "Person",
+    "name": "Shawn Lehner"
+  }
+};
+
+// FAQPage schema for rich snippets
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is color contrast ratio?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Color contrast ratio is a mathematical measurement of the difference in luminance (perceived brightness) between two colors. It's expressed as a ratio like 4.5:1, where the first number represents the lighter color and the second the darker. The maximum possible ratio is 21:1 (black on white or white on black)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What's the difference between WCAG AA and AAA?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "WCAG AA is the minimum standard required for legal compliance, requiring a 4.5:1 ratio for normal text. WCAG AAA is a higher standard requiring 7:1 for normal text. While AAA provides better accessibility, it can be challenging to achieve with certain color schemes. Most organizations target AA compliance as their baseline."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I fix low contrast colors?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "To improve contrast, either darken the darker color or lighten the lighter color. HuePass provides automatic suggestions that adjust your colors to meet AA standards while staying as close as possible to your original choices. You can also try using pure black (#000000) or pure white (#FFFFFF) as they provide the highest contrast."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does color contrast apply to images and icons?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, any meaningful visual elements that convey information need sufficient contrast. This includes icons, graphical objects, and the boundaries of form inputs. UI components and graphical objects require a minimum 3:1 contrast ratio against adjacent colors to meet WCAG 2.1 success criterion 1.4.11."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use color alone to convey information?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No, you should never rely solely on color to communicate important information. Always provide additional visual cues like icons, patterns, underlines for links, or text labels. This ensures users with color blindness or grayscale displays can still understand your content."
+      }
+    }
+  ]
+};
+
+// Combine schemas
+const combinedSchema = [webAppSchema, faqSchema];
+---
+
+<BaseLayout title={title} description={description} schema={combinedSchema}>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge">Free Tool</div>
+        <h1 class="hero-title">
+          Color Contrast
+          <span class="hero-gradient">Made Simple</span>
+        </h1>
+        <p class="hero-description">
+          Verify WCAG compliance instantly. Check contrast ratios, get accessible alternatives, and build export-ready color palettes for your design system.
+        </p>
+        <div class="hero-stats">
+          <div class="stat">
+            <span class="stat-value">AA/AAA</span>
+            <span class="stat-label">WCAG Compliance</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat">
+            <span class="stat-value">Real-time</span>
+            <span class="stat-label">Instant Results</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat">
+            <span class="stat-value">7 Formats</span>
+            <span class="stat-label">Export Options</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-gradient-bg" aria-hidden="true"></div>
+  </section>
+
+  <!-- Main Tool Section -->
+  <section class="tool-section">
+    <div class="container">
+      <ContrastChecker />
+      <PaletteBuilder />
+    </div>
+  </section>
+
+  <!-- SEO Content -->
+  <SEOContent />
+</BaseLayout>
+
+<style>
+  /* Hero Section */
+  .hero {
+    position: relative;
+    padding: var(--space-16) 0 var(--space-20);
+    overflow: hidden;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .hero-badge {
+    display: inline-block;
+    padding: var(--space-1) var(--space-3);
+    margin-bottom: var(--space-4);
+    font-size: var(--text-xs);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wide);
+    color: var(--color-accent);
+    background: var(--color-accent-subtle);
+    border: 1px solid rgba(99, 102, 241, 0.3);
+    border-radius: var(--radius-full);
+  }
+
+  .hero-title {
+    font-size: clamp(2.5rem, 8vw, 4rem);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    margin-bottom: var(--space-6);
+  }
+
+  .hero-gradient {
+    display: block;
+    background: linear-gradient(135deg, var(--color-accent) 0%, #a855f7 50%, #ec4899 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-description {
+    font-size: var(--text-xl);
+    color: var(--color-text-secondary);
+    line-height: var(--leading-relaxed);
+    margin-bottom: var(--space-10);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-stats {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-6);
+    padding: var(--space-4) var(--space-8);
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: var(--radius-xl);
+  }
+
+  .stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-1);
+  }
+
+  .stat-value {
+    font-size: var(--text-lg);
+    font-weight: 600;
+    color: var(--color-text-primary);
+  }
+
+  .stat-label {
+    font-size: var(--text-xs);
+    color: var(--color-text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wide);
+  }
+
+  .stat-divider {
+    width: 1px;
+    height: 32px;
+    background: var(--color-border);
+  }
+
+  .hero-gradient-bg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 150%;
+    height: 150%;
+    background: radial-gradient(ellipse at center, rgba(99, 102, 241, 0.08) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  /* Tool Section */
+  .tool-section {
+    position: relative;
+    padding-bottom: var(--space-8);
+  }
+
+  .tool-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      var(--color-border) 20%,
+      var(--color-accent) 50%,
+      var(--color-border) 80%,
+      transparent 100%
+    );
+  }
+
+  /* Responsive */
+  @media (max-width: 640px) {
+    .hero {
+      padding: var(--space-10) 0 var(--space-12);
+    }
+
+    .hero-description {
+      font-size: var(--text-lg);
+    }
+
+    .hero-stats {
+      flex-direction: column;
+      gap: var(--space-4);
+      padding: var(--space-4) var(--space-6);
+    }
+
+    .stat-divider {
+      width: 48px;
+      height: 1px;
+    }
+  }
+</style>

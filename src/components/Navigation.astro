@@ -1,0 +1,99 @@
+---
+const pathname = Astro.url.pathname;
+---
+
+<header class="nav">
+  <div class="nav-container container">
+    <a href="/" class="nav-logo" aria-label="HuePass Home">
+      <span class="logo-icon" aria-hidden="true"></span>
+      <span class="logo-text">HuePass</span>
+    </a>
+    <nav class="nav-links" aria-label="Main navigation">
+      <a href="/" class:list={["nav-link", { active: pathname === "/" }]}>Tool</a>
+      <a href="/resources" class:list={["nav-link", { active: pathname === "/resources" || pathname === "/resources/" }]}>Resources</a>
+      <a href="/about" class:list={["nav-link", { active: pathname === "/about" || pathname === "/about/" }]}>About</a>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(10, 10, 11, 0.8);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--color-border-subtle);
+  }
+
+  .nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    color: var(--color-text-primary);
+    font-weight: 600;
+    font-size: var(--text-lg);
+    text-decoration: none;
+    transition: opacity var(--transition-fast);
+  }
+
+  .nav-logo:hover {
+    opacity: 0.8;
+    color: var(--color-text-primary);
+  }
+
+  .logo-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: var(--radius-sm);
+    background: linear-gradient(135deg, var(--color-accent) 0%, #a855f7 100%);
+    position: relative;
+  }
+
+  .logo-icon::after {
+    content: '';
+    position: absolute;
+    inset: 4px;
+    background: var(--color-bg-primary);
+    border-radius: 2px;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+  }
+
+  .nav-link {
+    padding: var(--space-2) var(--space-4);
+    color: var(--color-text-secondary);
+    font-size: var(--text-sm);
+    font-weight: 500;
+    text-decoration: none;
+    border-radius: var(--radius-md);
+    transition: color var(--transition-fast), background var(--transition-fast);
+  }
+
+  .nav-link:hover {
+    color: var(--color-text-primary);
+    background: var(--color-bg-hover);
+  }
+
+  .nav-link.active {
+    color: var(--color-text-primary);
+    background: var(--color-bg-tertiary);
+  }
+
+  @media (max-width: 480px) {
+    .logo-text {
+      display: none;
+    }
+  }
+</style>

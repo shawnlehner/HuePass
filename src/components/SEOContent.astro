@@ -1,0 +1,471 @@
+---
+/**
+ * SEO Content Section for Homepage
+ * Provides educational content and long-tail keyword optimization
+ */
+---
+
+<section class="seo-content">
+  <!-- How to Use Section -->
+  <article class="content-section" id="how-to-use">
+    <div class="container container-narrow">
+      <h2 class="section-title">How to Check Color Contrast</h2>
+      <div class="steps-grid">
+        <div class="step">
+          <div class="step-number">1</div>
+          <h3 class="step-title">Enter Your Colors</h3>
+          <p class="step-text">
+            Input your foreground (text) and background colors using the color picker or by typing hex codes directly.
+          </p>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <h3 class="step-title">Check the Results</h3>
+          <p class="step-text">
+            Instantly see your contrast ratio and whether it passes WCAG AA or AAA standards for different text sizes.
+          </p>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <h3 class="step-title">Build Your Palette</h3>
+          <p class="step-text">
+            Save compliant color combinations to your palette and export them as CSS variables, JSON, or Tailwind config.
+          </p>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- WCAG Requirements Section -->
+  <article class="content-section requirements-section" id="wcag-requirements">
+    <div class="container container-narrow">
+      <h2 class="section-title">WCAG Color Contrast Requirements</h2>
+      <p class="section-intro">
+        The Web Content Accessibility Guidelines (WCAG) define specific contrast ratios to ensure text is readable for users with visual impairments, including color blindness and low vision.
+      </p>
+
+      <div class="requirements-grid">
+        <div class="requirement-card card">
+          <div class="requirement-header">
+            <span class="requirement-level">AA</span>
+            <span class="requirement-label">Minimum</span>
+          </div>
+          <div class="requirement-body">
+            <div class="ratio-row">
+              <span class="ratio-type">Normal Text</span>
+              <span class="ratio-value">4.5:1</span>
+            </div>
+            <div class="ratio-row">
+              <span class="ratio-type">Large Text</span>
+              <span class="ratio-value">3:1</span>
+            </div>
+            <div class="ratio-row">
+              <span class="ratio-type">UI Components</span>
+              <span class="ratio-value">3:1</span>
+            </div>
+          </div>
+          <p class="requirement-note">
+            Required for legal compliance in many jurisdictions. Suitable for most websites and applications.
+          </p>
+        </div>
+
+        <div class="requirement-card card">
+          <div class="requirement-header">
+            <span class="requirement-level aaa">AAA</span>
+            <span class="requirement-label">Enhanced</span>
+          </div>
+          <div class="requirement-body">
+            <div class="ratio-row">
+              <span class="ratio-type">Normal Text</span>
+              <span class="ratio-value">7:1</span>
+            </div>
+            <div class="ratio-row">
+              <span class="ratio-type">Large Text</span>
+              <span class="ratio-value">4.5:1</span>
+            </div>
+            <div class="ratio-row">
+              <span class="ratio-type">UI Components</span>
+              <span class="ratio-value">3:1</span>
+            </div>
+          </div>
+          <p class="requirement-note">
+            Recommended for optimal accessibility. Essential for healthcare, government, and education websites.
+          </p>
+        </div>
+      </div>
+
+      <div class="text-size-note">
+        <h4>What counts as large text?</h4>
+        <p>
+          Large text is defined as <strong>18pt (24px) or larger</strong>, or <strong>14pt (18.67px) bold or larger</strong>. Large text has lower contrast requirements because bigger letterforms are inherently more readable.
+        </p>
+      </div>
+    </div>
+  </article>
+
+  <!-- Why Accessibility Matters Section -->
+  <article class="content-section why-section" id="why-accessibility">
+    <div class="container container-narrow">
+      <h2 class="section-title">Why Color Accessibility Matters</h2>
+
+      <div class="why-grid">
+        <div class="why-card">
+          <div class="why-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+              <circle cx="9" cy="7" r="4"/>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
+          </div>
+          <h3 class="why-title">1 in 12 men have color blindness</h3>
+          <p class="why-text">
+            Approximately 8% of men and 0.5% of women have some form of color vision deficiency. Poor contrast makes your content invisible to millions of users.
+          </p>
+        </div>
+
+        <div class="why-card">
+          <div class="why-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+              <path d="M3 9h18"/>
+              <path d="M9 21V9"/>
+            </svg>
+          </div>
+          <h3 class="why-title">Legal compliance requirements</h3>
+          <p class="why-text">
+            ADA, Section 508, and international accessibility laws require WCAG compliance. Non-compliance can result in lawsuits and significant financial penalties.
+          </p>
+        </div>
+
+        <div class="why-card">
+          <div class="why-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+              <line x1="9" y1="9" x2="9.01" y2="9"/>
+              <line x1="15" y1="9" x2="15.01" y2="9"/>
+            </svg>
+          </div>
+          <h3 class="why-title">Better experience for everyone</h3>
+          <p class="why-text">
+            High contrast improves readability in bright sunlight, for aging populations, and for users with temporary impairments. Good accessibility is good design.
+          </p>
+        </div>
+
+        <div class="why-card">
+          <div class="why-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="12" y1="1" x2="12" y2="23"/>
+              <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+            </svg>
+          </div>
+          <h3 class="why-title">Increased conversions and engagement</h3>
+          <p class="why-text">
+            Accessible websites see higher engagement rates and conversions. When users can read your content clearly, they're more likely to take action.
+          </p>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- FAQ Section -->
+  <article class="content-section faq-section" id="faq">
+    <div class="container container-narrow">
+      <h2 class="section-title">Frequently Asked Questions</h2>
+
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary class="faq-question">What is color contrast ratio?</summary>
+          <div class="faq-answer">
+            <p>
+              Color contrast ratio is a mathematical measurement of the difference in luminance (perceived brightness) between two colors. It's expressed as a ratio like 4.5:1, where the first number represents the lighter color and the second the darker. The maximum possible ratio is 21:1 (black on white or white on black).
+            </p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">What's the difference between WCAG AA and AAA?</summary>
+          <div class="faq-answer">
+            <p>
+              WCAG AA is the minimum standard required for legal compliance, requiring a 4.5:1 ratio for normal text. WCAG AAA is a higher standard requiring 7:1 for normal text. While AAA provides better accessibility, it can be challenging to achieve with certain color schemes. Most organizations target AA compliance as their baseline.
+            </p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">How do I fix low contrast colors?</summary>
+          <div class="faq-answer">
+            <p>
+              To improve contrast, either darken the darker color or lighten the lighter color. Our tool provides automatic suggestions that adjust your colors to meet AA standards while staying as close as possible to your original choices. You can also try using pure black (#000000) or pure white (#FFFFFF) as they provide the highest contrast.
+            </p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">Does color contrast apply to images and icons?</summary>
+          <div class="faq-answer">
+            <p>
+              Yes, any meaningful visual elements that convey information need sufficient contrast. This includes icons, graphical objects, and the boundaries of form inputs. UI components and graphical objects require a minimum 3:1 contrast ratio against adjacent colors to meet WCAG 2.1 success criterion 1.4.11.
+            </p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">Can I use color alone to convey information?</summary>
+          <div class="faq-answer">
+            <p>
+              No, you should never rely solely on color to communicate important information. Always provide additional visual cues like icons, patterns, underlines for links, or text labels. This ensures users with color blindness or grayscale displays can still understand your content.
+            </p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </article>
+</section>
+
+<style>
+  .seo-content {
+    background: var(--color-bg-primary);
+  }
+
+  .content-section {
+    padding: var(--space-16) 0;
+    border-top: 1px solid var(--color-border-subtle);
+  }
+
+  .section-title {
+    font-size: var(--text-3xl);
+    text-align: center;
+    margin-bottom: var(--space-4);
+  }
+
+  .section-intro {
+    text-align: center;
+    font-size: var(--text-lg);
+    max-width: 600px;
+    margin: 0 auto var(--space-10);
+  }
+
+  /* Steps Grid */
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-8);
+  }
+
+  .step {
+    text-align: center;
+  }
+
+  .step-number {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto var(--space-4);
+    font-size: var(--text-xl);
+    font-weight: 700;
+    color: var(--color-accent);
+    background: var(--color-accent-subtle);
+    border-radius: var(--radius-full);
+  }
+
+  .step-title {
+    font-size: var(--text-lg);
+    margin-bottom: var(--space-2);
+  }
+
+  .step-text {
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+  }
+
+  /* Requirements Grid */
+  .requirements-section {
+    background: var(--color-bg-secondary);
+  }
+
+  .requirements-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-6);
+    margin-bottom: var(--space-8);
+  }
+
+  .requirement-card {
+    background: var(--color-bg-tertiary);
+  }
+
+  .requirement-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    margin-bottom: var(--space-4);
+    padding-bottom: var(--space-4);
+    border-bottom: 1px solid var(--color-border-subtle);
+  }
+
+  .requirement-level {
+    padding: var(--space-2) var(--space-3);
+    font-size: var(--text-lg);
+    font-weight: 700;
+    color: var(--color-success);
+    background: var(--color-success-subtle);
+    border-radius: var(--radius-md);
+  }
+
+  .requirement-level.aaa {
+    color: var(--color-accent);
+    background: var(--color-accent-subtle);
+  }
+
+  .requirement-label {
+    font-size: var(--text-sm);
+    color: var(--color-text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wide);
+  }
+
+  .ratio-row {
+    display: flex;
+    justify-content: space-between;
+    padding: var(--space-2) 0;
+    border-bottom: 1px solid var(--color-border-subtle);
+  }
+
+  .ratio-row:last-child {
+    border-bottom: none;
+  }
+
+  .ratio-type {
+    color: var(--color-text-secondary);
+  }
+
+  .ratio-value {
+    font-family: var(--font-mono);
+    font-weight: 600;
+    color: var(--color-text-primary);
+  }
+
+  .requirement-note {
+    margin-top: var(--space-4);
+    font-size: var(--text-sm);
+    color: var(--color-text-tertiary);
+  }
+
+  .text-size-note {
+    padding: var(--space-6);
+    background: var(--color-bg-tertiary);
+    border-radius: var(--radius-lg);
+    border-left: 3px solid var(--color-accent);
+  }
+
+  .text-size-note h4 {
+    font-size: var(--text-base);
+    margin-bottom: var(--space-2);
+  }
+
+  .text-size-note p {
+    font-size: var(--text-sm);
+    margin: 0;
+  }
+
+  /* Why Grid */
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-6);
+  }
+
+  .why-card {
+    padding: var(--space-6);
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: var(--radius-lg);
+  }
+
+  .why-icon {
+    color: var(--color-accent);
+    margin-bottom: var(--space-4);
+  }
+
+  .why-title {
+    font-size: var(--text-lg);
+    margin-bottom: var(--space-2);
+  }
+
+  .why-text {
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+    margin: 0;
+  }
+
+  /* FAQ Section */
+  .faq-section {
+    background: var(--color-bg-secondary);
+  }
+
+  .faq-list {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .faq-item {
+    border-bottom: 1px solid var(--color-border-subtle);
+  }
+
+  .faq-question {
+    display: flex;
+    align-items: center;
+    padding: var(--space-5) 0;
+    font-size: var(--text-lg);
+    font-weight: 500;
+    color: var(--color-text-primary);
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .faq-question::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-question::before {
+    content: '+';
+    margin-right: var(--space-4);
+    font-size: var(--text-xl);
+    color: var(--color-accent);
+    transition: transform var(--transition-fast);
+  }
+
+  details[open] .faq-question::before {
+    content: '-';
+  }
+
+  .faq-answer {
+    padding: 0 0 var(--space-5) var(--space-8);
+  }
+
+  .faq-answer p {
+    font-size: var(--text-base);
+    line-height: var(--leading-relaxed);
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .steps-grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-6);
+    }
+
+    .requirements-grid,
+    .why-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .section-title {
+      font-size: var(--text-2xl);
+    }
+  }
+</style>

@@ -1,0 +1,11 @@
+# robots.txt for HuePass
+# https://huepass.com
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://huepass.com/sitemap-index.xml
+
+# Crawl-delay for polite bots (optional)
+Crawl-delay: 1

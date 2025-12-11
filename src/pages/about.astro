@@ -1,0 +1,332 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = 'About';
+const description = 'Learn about HuePass, a free WCAG color contrast checker and accessible palette builder. Discover why this tool was built and its commitment to web accessibility.';
+
+// AboutPage schema
+const aboutSchema = {
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  "name": "About HuePass",
+  "description": description,
+  "url": "https://huepass.com/about",
+  "mainEntity": {
+    "@type": "WebApplication",
+    "name": "HuePass",
+    "url": "https://huepass.com",
+    "description": "Free WCAG color contrast checker and accessible palette builder"
+  }
+};
+---
+
+<BaseLayout title={title} description={description} schema={aboutSchema}>
+  <article class="about-page">
+    <div class="container container-narrow">
+      <!-- Hero -->
+      <header class="about-hero">
+        <h1 class="about-title">About HuePass</h1>
+        <p class="about-subtitle">
+          A free tool built to make accessible design effortless
+        </p>
+      </header>
+
+      <!-- Mission Section -->
+      <section class="about-section">
+        <h2 class="section-heading">The Mission</h2>
+        <p>
+          HuePass exists to remove barriers between designers and accessible color choices. Checking color contrast should be instant, intuitive, and free for everyone. By making WCAG compliance easy to verify, this tool helps create a more inclusive web where content is readable for all users, regardless of visual ability.
+        </p>
+      </section>
+
+      <!-- Why I Built This Section -->
+      <section class="about-section">
+        <h2 class="section-heading">Why I Built This</h2>
+        <p>
+          Color accessibility is often treated as an afterthought in the design process. Designers discover contrast issues late in development, leading to rushed fixes, compromised aesthetics, or worse - inaccessible products that exclude millions of users.
+        </p>
+        <p>
+          I built HuePass to bring accessibility testing into the earliest stages of design. With real-time feedback, automatic suggestions, and seamless palette management, designers can make informed color decisions from the very first sketch.
+        </p>
+        <div class="values-grid">
+          <div class="value-card">
+            <h3>Always Free</h3>
+            <p>
+              HuePass is and will always be completely free. No subscriptions, no premium tiers, no hidden costs. Accessible design tools should be accessible to everyone.
+            </p>
+          </div>
+          <div class="value-card">
+            <h3>Privacy First</h3>
+            <p>
+              Your color data stays on your device. This tool doesn't track your designs, collect your palettes, or sell your information. Your creative work belongs to you.
+            </p>
+          </div>
+          <div class="value-card">
+            <h3>No Dependencies</h3>
+            <p>
+              Built with pure web standards. No heavy frameworks, no third-party analytics, no unnecessary bloat. Just fast, reliable contrast checking.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Features Section -->
+      <section class="about-section">
+        <h2 class="section-heading">What You Can Do</h2>
+        <ul class="features-list">
+          <li>
+            <strong>Instant Contrast Checking</strong> - Enter any two colors and immediately see the contrast ratio with WCAG AA and AAA compliance status for different text sizes.
+          </li>
+          <li>
+            <strong>Smart Suggestions</strong> - When your colors don't meet accessibility standards, we suggest the nearest compliant alternatives that preserve your design intent.
+          </li>
+          <li>
+            <strong>Palette Building</strong> - Save accessible color combinations to build comprehensive palettes. See how all your colors work together in a contrast matrix.
+          </li>
+          <li>
+            <strong>Flexible Export</strong> - Export your palettes as CSS custom properties, JSON, or Tailwind configuration. Copy directly into your project.
+          </li>
+          <li>
+            <strong>Live Preview</strong> - See exactly how your text will look on your background with real sample content at different sizes.
+          </li>
+        </ul>
+      </section>
+
+      <!-- WCAG Compliance Section -->
+      <section class="about-section">
+        <h2 class="section-heading">Understanding WCAG Compliance</h2>
+        <p>
+          The Web Content Accessibility Guidelines (WCAG) are the international standard for web accessibility. Published by the World Wide Web Consortium (W3C), these guidelines ensure digital content is perceivable, operable, understandable, and robust for all users.
+        </p>
+        <p>
+          Color contrast is governed by WCAG Success Criterion 1.4.3 (Contrast - Minimum) for Level AA and 1.4.6 (Contrast - Enhanced) for Level AAA. Meeting these standards isn't just good practice - it's increasingly a legal requirement under the Americans with Disabilities Act (ADA), Section 508, and similar legislation worldwide.
+        </p>
+        <p>
+          By designing with accessibility in mind from the start, you create better experiences for everyone - including users with low vision, color blindness, or situational impairments like screen glare or aging displays.
+        </p>
+      </section>
+
+      <!-- Creator Section -->
+      <section class="about-section creator-section">
+        <h2 class="section-heading">Created By</h2>
+        <div class="creator-card">
+          <div class="creator-info">
+            <h3 class="creator-name">Shawn Lehner</h3>
+            <p class="creator-role">Designer & Developer</p>
+            <p class="creator-bio">
+              Passionate about building tools that make the web more accessible and inclusive. HuePass is part of an ongoing commitment to creating free resources that empower designers and developers to build better digital experiences.
+            </p>
+            <a href="https://www.shawnlehner.com/" target="_blank" rel="noopener noreferrer" class="creator-link">
+              <span>Visit shawnlehner.com</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                <polyline points="15 3 21 3 21 9"/>
+                <line x1="10" y1="14" x2="21" y2="3"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA Section -->
+      <section class="about-cta">
+        <h2>Ready to check your colors?</h2>
+        <p>Start building accessible color palettes today.</p>
+        <a href="/" class="btn btn-primary btn-lg">
+          Open the Tool
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"/>
+            <polyline points="12 5 19 12 12 19"/>
+          </svg>
+        </a>
+      </section>
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .about-page {
+    padding: var(--space-12) 0 var(--space-20);
+  }
+
+  .about-hero {
+    text-align: center;
+    margin-bottom: var(--space-12);
+    padding-bottom: var(--space-12);
+    border-bottom: 1px solid var(--color-border-subtle);
+  }
+
+  .about-title {
+    font-size: var(--text-4xl);
+    margin-bottom: var(--space-4);
+  }
+
+  .about-subtitle {
+    font-size: var(--text-xl);
+    color: var(--color-text-secondary);
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .about-section {
+    margin-bottom: var(--space-12);
+  }
+
+  .section-heading {
+    font-size: var(--text-2xl);
+    margin-bottom: var(--space-4);
+    padding-bottom: var(--space-3);
+    border-bottom: 2px solid var(--color-accent);
+    display: inline-block;
+  }
+
+  .about-section p {
+    font-size: var(--text-lg);
+    line-height: var(--leading-relaxed);
+    margin-bottom: var(--space-4);
+  }
+
+  .about-section p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Values Grid */
+  .values-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-4);
+    margin-top: var(--space-8);
+  }
+
+  .value-card {
+    padding: var(--space-5);
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: var(--radius-lg);
+  }
+
+  .value-card h3 {
+    font-size: var(--text-base);
+    margin-bottom: var(--space-2);
+    color: var(--color-accent);
+  }
+
+  .value-card p {
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+    margin: 0;
+  }
+
+  /* Features List */
+  .features-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .features-list li {
+    padding: var(--space-4) 0;
+    border-bottom: 1px solid var(--color-border-subtle);
+    font-size: var(--text-base);
+    color: var(--color-text-secondary);
+    line-height: var(--leading-relaxed);
+  }
+
+  .features-list li:last-child {
+    border-bottom: none;
+  }
+
+  .features-list strong {
+    color: var(--color-text-primary);
+  }
+
+  /* Creator Section */
+  .creator-section {
+    margin-top: var(--space-16);
+  }
+
+  .creator-card {
+    padding: var(--space-8);
+    background: linear-gradient(135deg, var(--color-accent-subtle) 0%, rgba(168, 85, 247, 0.1) 100%);
+    border: 1px solid rgba(99, 102, 241, 0.3);
+    border-radius: var(--radius-xl);
+    text-align: center;
+  }
+
+  .creator-name {
+    font-size: var(--text-2xl);
+    margin-bottom: var(--space-1);
+  }
+
+  .creator-role {
+    font-size: var(--text-sm);
+    color: var(--color-accent);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wide);
+    margin-bottom: var(--space-4);
+  }
+
+  .creator-bio {
+    font-size: var(--text-base);
+    color: var(--color-text-secondary);
+    max-width: 500px;
+    margin: 0 auto var(--space-6);
+  }
+
+  .creator-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-3) var(--space-6);
+    font-size: var(--text-base);
+    font-weight: 500;
+    color: var(--color-text-primary);
+    background: var(--color-accent);
+    border-radius: var(--radius-md);
+    transition: background var(--transition-fast), transform var(--transition-fast);
+  }
+
+  .creator-link:hover {
+    background: var(--color-accent-hover);
+    transform: translateY(-1px);
+    color: var(--color-text-primary);
+  }
+
+  /* CTA Section */
+  .about-cta {
+    text-align: center;
+    padding: var(--space-12);
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: var(--radius-xl);
+    margin-top: var(--space-12);
+  }
+
+  .about-cta h2 {
+    font-size: var(--text-2xl);
+    margin-bottom: var(--space-2);
+  }
+
+  .about-cta p {
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-6);
+  }
+
+  .about-cta .btn {
+    gap: var(--space-2);
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .about-title {
+      font-size: var(--text-3xl);
+    }
+
+    .values-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .creator-card {
+      padding: var(--space-6);
+    }
+  }
+</style>
