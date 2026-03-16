@@ -2,7 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 
 const title = 'Accessibility Resources';
-const description = 'Learn about web accessibility, WCAG guidelines, color contrast requirements, and legal standards. Comprehensive resources for designers and developers building inclusive digital experiences.';
+const description = 'Learn about WCAG guidelines, color contrast requirements, and legal standards. Essential resources for designers and developers building accessible experiences.';
 
 // Educational Article schema with BreadcrumbList
 const resourcesSchema = [
@@ -401,10 +401,10 @@ const resourcesSchema = [
       <!-- CTA Section -->
       <section class="resources-cta">
         <h2>Ready to check your colors?</h2>
-        <p>Use our free tool to verify WCAG compliance and build accessible palettes.</p>
+        <p>Use our free tool to verify WCAG compliance and build accessible palettes. Learn more <a href="/about" class="inline-link">about HuePass</a> and why we built it.</p>
         <a href="/" class="btn btn-primary btn-lg">
           Open the Contrast Checker
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <line x1="5" y1="12" x2="19" y2="12"/>
             <polyline points="12 5 19 12 12 19"/>
           </svg>
@@ -797,6 +797,17 @@ const resourcesSchema = [
 
   .resources-cta .btn {
     gap: var(--space-2);
+  }
+
+  .inline-link {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    transition: color var(--transition-fast);
+  }
+
+  .inline-link:hover {
+    color: var(--color-accent-hover);
   }
 
   /* Responsive */

@@ -5,7 +5,7 @@ import PaletteBuilder from '../components/PaletteBuilder.astro';
 import SEOContent from '../components/SEOContent.astro';
 
 const title = 'HuePass';
-const description = 'Free WCAG color contrast checker and accessible palette builder. Instantly verify AA/AAA compliance, get suggested alternatives, and export accessible color palettes for your design system.';
+const description = 'Free WCAG color contrast checker and accessible palette builder. Verify AA/AAA compliance, get accessible alternatives, and export color palettes.';
 
 // WebApplication schema for the tool
 const webAppSchema = {
@@ -86,8 +86,40 @@ const faqSchema = {
   ]
 };
 
+// HowTo schema for rich snippets
+const howToSchema = {
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to Check Color Contrast for WCAG Compliance",
+  "description": "Learn how to check color contrast ratios and verify WCAG AA/AAA compliance using HuePass.",
+  "step": [
+    {
+      "@type": "HowToStep",
+      "position": 1,
+      "name": "Enter Your Colors",
+      "text": "Input your foreground (text) and background colors using the color picker or by typing hex codes directly."
+    },
+    {
+      "@type": "HowToStep",
+      "position": 2,
+      "name": "Check the Results",
+      "text": "Instantly see your contrast ratio and whether it passes WCAG AA or AAA standards for different text sizes."
+    },
+    {
+      "@type": "HowToStep",
+      "position": 3,
+      "name": "Build Your Palette",
+      "text": "Save compliant color combinations to your palette and export them as CSS variables, JSON, or Tailwind config."
+    }
+  ],
+  "tool": {
+    "@type": "HowToTool",
+    "name": "HuePass Color Contrast Checker"
+  }
+};
+
 // Combine schemas
-const combinedSchema = [webAppSchema, faqSchema];
+const combinedSchema = [webAppSchema, faqSchema, howToSchema];
 ---
 
 <BaseLayout title={title} description={description} schema={combinedSchema}>

@@ -14,6 +14,11 @@
         </a>
       </p>
     </div>
+    <nav class="footer-nav" aria-label="Footer navigation">
+      <a href="/" class="footer-link">Tool</a>
+      <a href="/resources" class="footer-link">Resources</a>
+      <a href="/about" class="footer-link">About</a>
+    </nav>
     <div class="footer-meta">
       <p class="footer-opensource">
         <a href="https://github.com/shawnlehner/HuePass" target="_blank" rel="noopener noreferrer" class="opensource-link">Open source</a> and free to use.
@@ -93,6 +98,22 @@
 
   .author-link:hover {
     color: var(--color-accent-hover);
+  }
+
+  .footer-nav {
+    display: flex;
+    gap: var(--space-6);
+  }
+
+  .footer-link {
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+  }
+
+  .footer-link:hover {
+    color: var(--color-accent);
   }
 
   .footer-meta {
